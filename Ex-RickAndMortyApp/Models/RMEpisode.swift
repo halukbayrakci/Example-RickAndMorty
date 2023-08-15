@@ -18,3 +18,4 @@ struct RMEpisode: Codable {
     let created: String
     
 }
+ 
