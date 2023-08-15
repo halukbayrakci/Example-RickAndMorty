@@ -1,1 +1,2 @@
-# Example-RickAndMorty
+# Swift Rick & Morty App
+
