@@ -16,20 +16,16 @@ final class RMCharacterViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Characters"
         
-        let request = RMRequest(
-            endpoint: .character,
-            queryParameters: [
-            URLQueryItem(name: "name", value: "rick"),
-            URLQueryItem(name: "status", value: "alive")
-            ]
-        )
-        
-        print(request)
-        
-        
-        RMServices.shared.execute(request, expecting: RMCharacter.self) { result in
-            
+        RMServices.shared.execute(.listCharacterRequest, expecting: RMGetAllCharactersResponse.self) { result in
+            switch result {
+            case .success(let model):
+                print("Total: "+String(model.info.count))
+                print("Page result count: "+String(model.results.count))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
+        
     }
     
 
