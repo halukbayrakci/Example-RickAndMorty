@@ -34,6 +34,7 @@
 		81DBA4E62A9243FD00124442 /* RMCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4E52A9243FD00124442 /* RMCharacterDetailViewController.swift */; };
 		81DBA4E82A9244CB00124442 /* RMCharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4E72A9244CB00124442 /* RMCharacterDetailView.swift */; };
 		81DBA4EA2A9244F100124442 /* RMCharacterDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4E92A9244F100124442 /* RMCharacterDetailViewViewModel.swift */; };
+		81DBA4EC2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4EB2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		81DBA4E52A9243FD00124442 /* RMCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewController.swift; sourceTree = "<group>"; };
 		81DBA4E72A9244CB00124442 /* RMCharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailView.swift; sourceTree = "<group>"; };
 		81DBA4E92A9244F100124442 /* RMCharacterDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewViewModel.swift; sourceTree = "<group>"; };
+		81DBA4EB2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				81DBA4DE2A8E275F00124442 /* RMCharacterListView.swift */,
 				81DBA4E02A90A5E800124442 /* RMCharacterCollectionViewCell.swift */,
 				81DBA4E72A9244CB00124442 /* RMCharacterDetailView.swift */,
+				81DBA4EB2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift */,
 				81DBA4B52A8B915900124442 /* Models */,
 			);
 			path = Views;
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DBA4EC2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift in Sources */,
 				81DBA4D12A8BB5AF00124442 /* RMOrigin.swift in Sources */,
 				81DBA4D32A8BB6A400124442 /* RMSingleLocation.swift in Sources */,
 				81DBA4E32A90A76000124442 /* RMCharacterCollectionViewCellViewModel.swift in Sources */,

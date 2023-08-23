@@ -34,6 +34,9 @@ final class RMCharacterListView: UIView {
         collectionView.alpha = 0
         collectionView.isHidden = true
         collectionView.register(RMCharacterCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterCollectionViewCell.cellIdentifier)
+        
+        collectionView.register(RMFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RMFooterLoadingCollectionReusableView.identifier)
+        
         return collectionView
     }()
     
@@ -76,7 +79,7 @@ final class RMCharacterListView: UIView {
 
 extension RMCharacterListView: RMCharacterListViewViewModelDelegate {
    
-    func didSelectCharacter(_ character: RMCharacter) {
+    func didSelectCharacter(_ character: `RMCharacter`) {
         delegate?.rmCharacterListView(self, didSelectCharacter: character)
     }
     
