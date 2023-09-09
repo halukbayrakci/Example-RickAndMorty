@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		819C129D2AAC8AB300949938 /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C129C2AAC8AB300949938 /* RMImageLoader.swift */; };
 		81DBA4A12A8B670D00124442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4A02A8B670D00124442 /* AppDelegate.swift */; };
 		81DBA4A32A8B670D00124442 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4A22A8B670D00124442 /* SceneDelegate.swift */; };
 		81DBA4A52A8B670D00124442 /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4A42A8B670D00124442 /* RMTabBarController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		819C129C2AAC8AB300949938 /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 		81DBA49D2A8B670C00124442 /* Ex-RickAndMortyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ex-RickAndMortyApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DBA4A02A8B670D00124442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81DBA4A22A8B670D00124442 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		81DBA4B92A8B918300124442 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				819C129C2AAC8AB300949938 /* RMImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				81DBA4D32A8BB6A400124442 /* RMSingleLocation.swift in Sources */,
 				81DBA4E32A90A76000124442 /* RMCharacterCollectionViewCellViewModel.swift in Sources */,
 				81DBA4DF2A8E275F00124442 /* RMCharacterListView.swift in Sources */,
+				819C129D2AAC8AB300949938 /* RMImageLoader.swift in Sources */,
 				81DBA4D52A8BB80000124442 /* RMCharacterStatus.swift in Sources */,
 				81DBA4D72A8BB85400124442 /* RMCharactersGender.swift in Sources */,
 				81DBA4A52A8B670D00124442 /* RMTabBarController.swift in Sources */,

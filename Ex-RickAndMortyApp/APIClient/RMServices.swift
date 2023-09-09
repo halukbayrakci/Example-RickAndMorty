@@ -33,6 +33,7 @@ final class RMServices {
             completion(.failure(RMServiceError.failedGetData))
             return
         }
+//        print("API CALL: \(request.url?.absoluteString ?? "")")
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
             guard let data = data, error == nil else {
