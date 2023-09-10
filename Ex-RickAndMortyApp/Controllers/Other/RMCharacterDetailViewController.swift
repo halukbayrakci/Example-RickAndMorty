@@ -91,21 +91,18 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(with: viewModel)
-            cell.backgroundColor = .systemYellow
             return cell
         case .information(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterInformationCollectionViewCell.cellIdentifer, for: indexPath) as? RMCharacterInformationCollectionViewCell else {
                 fatalError()
             }
             cell.configure(with: viewModels[indexPath.row])
-            cell.backgroundColor = .systemRed
             return cell
         case .episodes(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterEpisodesCollectionViewCell.cellIdentifer, for: indexPath) as? RMCharacterEpisodesCollectionViewCell else {
                 fatalError()
             }
             cell.configure(with: viewModels[indexPath.row])
-            cell.backgroundColor = .systemOrange
             return cell
         }
     }
