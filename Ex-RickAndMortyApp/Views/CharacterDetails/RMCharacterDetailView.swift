@@ -9,9 +9,10 @@ import UIKit
 
 /// View for single character info
 final class RMCharacterDetailView: UIView {
-
+    
     public var collectionView: UICollectionView?
     private let viewModel: RMCharacterDetailViewViewModel
+    
     private let activityIndicator: UIActivityIndicatorView = {
         
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -79,7 +80,7 @@ final class RMCharacterDetailView: UIView {
             return viewModel.createInformationSectionLayout()
         case .episodes:
             return viewModel.createEpisodesSectionLayout()
-        
+            
         }
         
     }
