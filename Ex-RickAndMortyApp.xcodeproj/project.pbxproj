@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8161F0732AC1C43D00EA60DC /* RMSearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8161F0722AC1C43D00EA60DC /* RMSearchResultsViewModel.swift */; };
+		816E13BE2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E13BD2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift */; };
 		819C129D2AAC8AB300949938 /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C129C2AAC8AB300949938 /* RMImageLoader.swift */; };
 		819C12A22AADCBC400949938 /* RMCharacterPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C12A12AADCBC400949938 /* RMCharacterPhotoCollectionViewCell.swift */; };
 		819C12A42AADCBE100949938 /* RMCharacterInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C12A32AADCBE100949938 /* RMCharacterInformationCollectionViewCell.swift */; };
@@ -73,6 +75,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8161F0722AC1C43D00EA60DC /* RMSearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchResultsViewModel.swift; sourceTree = "<group>"; };
+		816E13BD2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchOptionPickerViewController.swift; sourceTree = "<group>"; };
 		819C129C2AAC8AB300949938 /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 		819C12A12AADCBC400949938 /* RMCharacterPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		819C12A32AADCBE100949938 /* RMCharacterInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterInformationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +155,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		816E13BF2ABF25B800E8E31C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				819C12BD2AB0ADEA00949938 /* RMSearchViewController.swift */,
+				816E13BD2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		819C129F2AADCB6800949938 /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +282,7 @@
 				819C12E52AB877AB00949938 /* RMSearchViewViewModel.swift */,
 				819C12EA2AB87B2600949938 /* RMNoSearchResultsViewViewModel.swift */,
 				819C12EE2AB87B9E00949938 /* RMSearchInputViewViewModel.swift */,
+				8161F0722AC1C43D00EA60DC /* RMSearchResultsViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -422,9 +436,9 @@
 		81DBA4E42A9243D400124442 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				816E13BF2ABF25B800E8E31C /* Search */,
 				81DBA4E52A9243FD00124442 /* RMCharacterDetailViewController.swift */,
 				819C12AE2AAF483E00949938 /* RMEpisodeDetailViewController.swift */,
-				819C12BD2AB0ADEA00949938 /* RMSearchViewController.swift */,
 				819C12DB2AB866E900949938 /* RMLocationDetailViewController.swift */,
 			);
 			path = Other;
@@ -458,7 +472,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					81DBA49C2A8B670C00124442 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -532,6 +546,7 @@
 				819C12B12AAF50FD00949938 /* RMAPICacheManager.swift in Sources */,
 				81DBA4DB2A8E1D3E00124442 /* RMGetAllCharactersResponse.swift in Sources */,
 				819C12C42AB244F300949938 /* RMEpisodeInformationCollectionViewCellViewModel.swift in Sources */,
+				816E13BE2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift in Sources */,
 				81DBA4C92A8B93B000124442 /* RMSettingsViewController.swift in Sources */,
 				81DBA4A12A8B670D00124442 /* AppDelegate.swift in Sources */,
 				81DBA4CB2A8BA79D00124442 /* RMServices.swift in Sources */,
@@ -543,6 +558,7 @@
 				819C12EF2AB87B9E00949938 /* RMSearchInputViewViewModel.swift in Sources */,
 				819C12D72AB5CFAB00949938 /* RMLocationTableViewCell.swift in Sources */,
 				81DBA4C32A8B933300124442 /* RMCharacterViewController.swift in Sources */,
+				8161F0732AC1C43D00EA60DC /* RMSearchResultsViewModel.swift in Sources */,
 				819C12ED2AB87B7100949938 /* RMSearchInputView.swift in Sources */,
 				819C12E12AB86A6F00949938 /* RMLocationDetailViewViewModel.swift in Sources */,
 				81DBA4C02A8B925A00124442 /* RMLocation.swift in Sources */,
@@ -614,6 +630,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -674,6 +691,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
