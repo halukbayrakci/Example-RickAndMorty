@@ -30,13 +30,29 @@ final class RMSearchResultsView: UIView {
         return tableView
     }()
     
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isHidden = true
+        collectionView.register(RMCharacterCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterCollectionViewCell.cellIdentifier)
+        collectionView.register(RMCharacterEpisodesCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterEpisodesCollectionViewCell.cellIdentifer)
+        collectionView.register(RMFooterLoadingCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RMFooterLoadingCollectionReusableView.identifier)
+        
+        return collectionView
+    }()
+    
     private var locationCellViewModels: [RMLocationTableViewCellViewModel] = []
+    private var collectionViewCellViewModels: [any Hashable] = []
     
     //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(tableView)
+        addSubview(collectionView)
         isHidden = true
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -55,8 +71,10 @@ final class RMSearchResultsView: UIView {
         
         switch viewModel {
         case .characters(let viewModels):
+            self.collectionViewCellViewModels = viewModels
             setUpCollectionView()
         case .episodes(let viewModels):
+            self.collectionViewCellViewModels = viewModels
             setUpCollectionView()
         case .locations(let viewModels):
             setUpTableView(viewModels: viewModels)
@@ -67,12 +85,17 @@ final class RMSearchResultsView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = false
+        collectionView.isHidden = true
         self.locationCellViewModels = viewModels
         tableView.reloadData()
     }
     
     private func setUpCollectionView() {
-        
+        self.tableView.isHidden = true
+        self.collectionView.isHidden = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.reloadData()
         
     }
     
@@ -81,7 +104,12 @@ final class RMSearchResultsView: UIView {
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -91,7 +119,7 @@ final class RMSearchResultsView: UIView {
 
 }
 
-//MARK: - UITableViewDataSource & UITableViewDelegate
+//MARK: - UITableView(UITableViewDataSource & UITableViewDelegate)
 
 extension RMSearchResultsView: UITableViewDataSource, UITableViewDelegate {
     
@@ -112,4 +140,66 @@ extension RMSearchResultsView: UITableViewDataSource, UITableViewDelegate {
         delegate?.RMSearchResultsView(self, didTapLocationAt: indexPath.row)
     }
     
+}
+
+//MARK: - UICollectionView(UICollectionViewDelegate, UICollectionViewDelegateFlowLayout & UICollectionViewDataSource)
+
+extension RMSearchResultsView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionViewCellViewModels.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Character | Episode
+        let currentViewModel = collectionViewCellViewModels[indexPath.row]
+        if let characterVM = currentViewModel as? RMCharacterCollectionViewCellViewModel {
+            // Character Cell
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RMCharacterCollectionViewCell.cellIdentifier,
+                for: indexPath)
+                    as? RMCharacterCollectionViewCell else {
+                fatalError()
+            }
+            cell.configure(with: characterVM)
+            return cell
+        }
+        // Episode
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: RMCharacterEpisodesCollectionViewCell.cellIdentifer,
+            for: indexPath)
+                as? RMCharacterEpisodesCollectionViewCell else {
+            fatalError()
+        }
+        if let episodeVM = currentViewModel as? RMCharacterEpisodesCollectionViewCellViewModel {
+            cell.configure(with: episodeVM)
+        }
+        return cell
+    }
+    
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        // Handle cell tap
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let currenViewModel = collectionViewCellViewModels[indexPath.row]
+        
+        if currenViewModel is RMCharacterCollectionViewCellViewModel {
+            // Character size
+            let bounds = UIScreen.main.bounds
+            let width = (bounds.width-30)/2
+            return CGSize(width: width , height: width*1.5 )
+        }
+        
+        // Episode Size
+        let bounds = collectionView.bounds
+        let width = bounds.width - 20
+        return CGSize(width: width , height: 100 )
+    }
 }
