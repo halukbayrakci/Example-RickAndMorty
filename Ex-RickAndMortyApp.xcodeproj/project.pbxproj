@@ -74,6 +74,7 @@
 		81DBA4E82A9244CB00124442 /* RMCharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4E72A9244CB00124442 /* RMCharacterDetailView.swift */; };
 		81DBA4EA2A9244F100124442 /* RMCharacterDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4E92A9244F100124442 /* RMCharacterDetailViewViewModel.swift */; };
 		81DBA4EC2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBA4EB2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift */; };
+		81EA577A2AC5A42C0081FB30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EA57792AC5A42C0081FB30 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		81DBA4E72A9244CB00124442 /* RMCharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailView.swift; sourceTree = "<group>"; };
 		81DBA4E92A9244F100124442 /* RMCharacterDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterDetailViewViewModel.swift; sourceTree = "<group>"; };
 		81DBA4EB2A96131200124442 /* RMFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
+		81EA57792AC5A42C0081FB30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +401,7 @@
 				81DBA4A22A8B670D00124442 /* SceneDelegate.swift */,
 				81DBA4A92A8B670E00124442 /* Assets.xcassets */,
 				81DBA4AB2A8B670E00124442 /* LaunchScreen.storyboard */,
+				81EA57792AC5A42C0081FB30 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				819C12E82AB87AD500949938 /* RMNoSearchResultsView.swift in Sources */,
 				819C12B12AAF50FD00949938 /* RMAPICacheManager.swift in Sources */,
 				81DBA4DB2A8E1D3E00124442 /* RMGetAllCharactersResponse.swift in Sources */,
+				81EA577A2AC5A42C0081FB30 /* Extensions.swift in Sources */,
 				819C12C42AB244F300949938 /* RMEpisodeInformationCollectionViewCellViewModel.swift in Sources */,
 				816E13BE2ABF23FB00E8E31C /* RMSearchOptionPickerViewController.swift in Sources */,
 				81DBA4C92A8B93B000124442 /* RMSettingsViewController.swift in Sources */,

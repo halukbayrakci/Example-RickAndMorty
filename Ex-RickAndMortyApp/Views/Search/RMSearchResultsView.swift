@@ -9,6 +9,8 @@ import UIKit
 
 protocol RMSearchResultsViewDelegate: AnyObject {
     func RMSearchResultsView(_ resultsView: RMSearchResultsView, didTapLocationAt index: Int)
+    func RMSearchResultsView(_ resultsView: RMSearchResultsView, didTapCharacterAt index: Int)
+    func RMSearchResultsView(_ resultsView: RMSearchResultsView, didTapEpisodeAt index: Int)
 }
 
 /// Shows search results UI(table or collection as needed)
@@ -33,7 +35,7 @@ final class RMSearchResultsView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isHidden = true
@@ -186,22 +188,33 @@ extension RMSearchResultsView: UICollectionViewDelegate, UICollectionViewDataSou
         collectionView.deselectItem(at: indexPath, animated: true)
         
         // Handle cell tap
+        guard let viewModel = viewModel else {
+            return
+        }
         
+        switch viewModel.results {
+        case .characters:
+            delegate?.RMSearchResultsView(self, didTapCharacterAt: indexPath.row)
+        case .episodes:
+            delegate?.RMSearchResultsView(self, didTapEpisodeAt: indexPath.row)
+        case .locations:
+            break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let currenViewModel = collectionViewCellViewModels[indexPath.row]
         
+        let bounds = collectionView.bounds
+
         if currenViewModel is RMCharacterCollectionViewCellViewModel {
             // Character size
-            let bounds = UIScreen.main.bounds
-            let width = (bounds.width-30)/2
-            return CGSize(width: width , height: width*1.5 )
+            let width = UIDevice.isIphone ? (bounds.width-30)/2 : (bounds.width-50)/4
+            return CGSize(width: width , height: width * 1.5 )
         }
         
         // Episode Size
-        let bounds = collectionView.bounds
-        let width = bounds.width - 20
+        let width = UIDevice.isIphone ? (bounds.width - 20) : (bounds.width - 50) / 4
         return CGSize(width: width , height: 100 )
     }
     
@@ -258,9 +271,22 @@ extension RMSearchResultsView: UIScrollViewDelegate {
             
             if offset >= ( totalContentHeight - totalScrollViewFixedHeight - 120) {
                 viewModel.fetchAdditionalResults { [weak self] newResults in
-                    self?.tableView.tableFooterView = nil
-                    self?.collectionViewCellViewModels = newResults
-                    print("Search add more result cells for search results: \(newResults.count) ")
+                    guard let  strongSelf = self else {
+                         return
+                    }
+                    DispatchQueue.main.async {
+                        strongSelf.tableView.tableFooterView = nil
+                                        
+                        let originalCount = strongSelf.collectionViewCellViewModels.count
+                        let newCount = (newResults.count - originalCount)
+                        let total = originalCount+newCount
+                        let startingIndex = total - newCount
+                        let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap {
+                            return IndexPath(row: $0, section: 0)
+                        }
+                        strongSelf.collectionViewCellViewModels = newResults
+                        strongSelf.collectionView.insertItems(at: indexPathsToAdd)
+                    }
                 }
             }
             t.invalidate()

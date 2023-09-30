@@ -18,7 +18,7 @@ enum RMCharacterStatus: String, Codable {
         case .alive, .dead:
             return rawValue
         case .unknown:
-            return "Unknownw"
+            return "Unknown"
         }
     }
 }
